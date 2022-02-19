@@ -1,11 +1,11 @@
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 
-type SearchText = {
+type Props = {
   label: string;
   handleSubmit: (value: string) => void;
 };
 
-const SearchTextInput = ({ label }: SearchText) => {
+const TextInput = ({ label }: Props) => {
   const [value, setValue] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,10 +14,10 @@ const SearchTextInput = ({ label }: SearchText) => {
 
   return (
     <div>
-      <label htmlFor="search-text-input">{label}</label>
+      <label htmlFor="text-input">{label}</label>
       <input
         type="text"
-        id="search-text-input"
+        id="text-input"
         value={value}
         onChange={handleChange}
       />
@@ -25,4 +25,4 @@ const SearchTextInput = ({ label }: SearchText) => {
   );
 };
 
-export default SearchTextInput;
+export default TextInput;
