@@ -1,4 +1,3 @@
-import React from "react";
 import SearchWrapper from "./UI/SearchWrapper/SearchWrapper";
 
 const Home = () => {
