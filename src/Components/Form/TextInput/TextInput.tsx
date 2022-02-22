@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { handleSubmit } from "../../../Views/Home/UI/SearchWrapper/Logic/Handlers";
+import SearchButton from "../../Buttons/SearchButton";
 
 const TextInput = ({ label }: { label: string }) => {
   const [value, setValue] = useState("");
@@ -15,13 +17,16 @@ const TextInput = ({ label }: { label: string }) => {
       >
         {label}
       </label>
-      <input
-        type="text"
-        id="text-input"
-        value={value}
-        onChange={handleChange}
-        className="w-full border-0 border-b-2 border-solid border-secondary-100 outline-none text-xl text-neutral-dark py-2 bg-transparent transition-colors duration-200 placeholder::text-transparent peer"
-      />
+      <div className="flex">
+        <input
+          type="text"
+          id="text-input"
+          value={value}
+          onChange={handleChange}
+          className="w-full border-0 border-b-2 border-solid border-secondary-100 outline-none text-xl text-neutral-dark py-2 bg-transparent transition-colors duration-200 placeholder::text-transparent peer"
+        />
+        <SearchButton handleClick={handleSubmit} />
+      </div>
     </div>
   );
 };

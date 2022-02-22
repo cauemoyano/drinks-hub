@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AutoCompleteInput from "../../../../Components/Form/AutoCompleteInput/AutoCompleteInput";
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import ListItem from "./Components/ListItem";
 import SearchInputWrapper from "./SearchInputWrapper";
@@ -28,8 +29,12 @@ const SearchWrapper = () => {
         </nav>
       </header>
       <main>
-        <SearchInputWrapper handleClick={() => {}}>
-          <TextInput label={"Name"} />
+        <SearchInputWrapper>
+          {activeTab === "By Name" ? (
+            <TextInput label={"Name"} />
+          ) : (
+            <AutoCompleteInput />
+          )}
         </SearchInputWrapper>
       </main>
     </div>
