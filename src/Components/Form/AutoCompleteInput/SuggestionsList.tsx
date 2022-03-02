@@ -10,7 +10,10 @@ const SuggestionsList = ({
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }) => {
   return filteredSuggestions.length ? (
-    <ul className="rounded bg-gray-100 overflow-auto max-h-36">
+    <ul
+      className="rounded bg-gray-100 overflow-auto max-h-36"
+      role="presentation"
+    >
       {filteredSuggestions.map((suggestion, index) => {
         const className = `py-2 px-2 ${
           index === activeSuggestionIndex ? "bg-white font-bold" : "bg-gray-100"
