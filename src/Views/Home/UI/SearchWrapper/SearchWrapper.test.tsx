@@ -9,22 +9,26 @@ const setup = () => {
   return { tabs, ...utils, screen };
 };
 
-describe("Tests search tabs functionality", () => {
-  test("Inputs By Name is display when component is first rendered", () => {
-    const { screen } = setup();
+describe("search tabs functionality", () => {
+  test("Inputs By Name is display when component is first rendered", async () => {
+    setup();
 
     const input = screen.getByLabelText("Name");
     expect(input).toBeVisible();
   });
-  test("Inputs change according to tab selection", () => {
-    const { screen, tabs } = setup();
+  test("By Category tab selected", async () => {
+    const { tabs } = setup();
 
     const tabByCategory = tabs.find((tab) => tab.textContent === "By Category");
     if (tabByCategory) {
       fireEvent.click(tabByCategory);
     }
+
     let input = screen.getByLabelText("Enter a category");
     expect(input).toBeVisible();
+  });
+  test("By Ingredient tab selected", async () => {
+    const { tabs } = setup();
 
     const tabByIngredient = tabs.find(
       (tab) => tab.textContent === "By Ingredient"
@@ -32,7 +36,8 @@ describe("Tests search tabs functionality", () => {
     if (tabByIngredient) {
       fireEvent.click(tabByIngredient);
     }
-    input = screen.getByLabelText("Enter an ingredient");
+
+    let input = screen.getByLabelText("Enter an ingredient");
     expect(input).toBeVisible();
   });
 });
