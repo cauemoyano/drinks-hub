@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { setTextRange } from "typescript";
-import { handleSubmit } from "../../../Views/Home/UI/SearchWrapper/Logic/Handlers";
 import SearchButton from "../../Buttons/SearchButton";
 import SuggestionsList from "./SuggestionsList";
 
 type Props = {
   label: string;
   data: Array<string>;
+  handleSubmit: (query: string) => void;
 };
 
-const AutoCompleteInput = ({ label, data }: Props) => {
+const AutoCompleteInput = ({ label, data, handleSubmit }: Props) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -75,7 +75,7 @@ const AutoCompleteInput = ({ label, data }: Props) => {
           onKeyDown={onKeyDown}
           className="w-full border-0 border-b-2 border-solid border-secondary-100 outline-none text-xl text-neutral-dark py-2 bg-transparent transition-colors duration-200 placeholder::text-transparent"
         />
-        <SearchButton handleClick={handleSubmit} />
+        <SearchButton handleClick={() => handleSubmit(input)} />
       </div>
       {showSuggestions && input && (
         <SuggestionsList

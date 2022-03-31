@@ -15,7 +15,7 @@ const SuggestionsList = ({
       role="presentation"
     >
       {filteredSuggestions.map((suggestion, index) => {
-        const className = `py-2 px-2 ${
+        const className = `py-2 px-2 cursor-pointer ${
           index === activeSuggestionIndex ? "bg-white font-bold" : "bg-gray-100"
         }`;
         return (

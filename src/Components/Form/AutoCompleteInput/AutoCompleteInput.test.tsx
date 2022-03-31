@@ -4,7 +4,11 @@ import AutoCompleteInput from "./AutoCompleteInput";
 
 const setup = (suggestions: string[] = ["chocolate", "strawberry"]) => {
   const utils = render(
-    <AutoCompleteInput data={suggestions} label="test input" />
+    <AutoCompleteInput
+      data={suggestions}
+      label="test input"
+      handleSubmit={() => {}}
+    />
   );
   const input: HTMLInputElement = screen.getByLabelText("test input");
   return {

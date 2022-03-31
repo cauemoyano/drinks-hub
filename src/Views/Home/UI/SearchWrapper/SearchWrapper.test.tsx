@@ -1,16 +1,21 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 
 import SearchWrapper from "./SearchWrapper";
 
 const setup = () => {
-  const utils = render(<SearchWrapper />);
-  const tabs = screen.getAllByRole("listitem");
+  const utils = render(
+    <BrowserRouter>
+      <SearchWrapper />
+    </BrowserRouter>
+  );
+  const tabs = screen.getAllByTestId("suggestion-item-list");
 
   return { tabs, ...utils, screen };
 };
 
 describe("search tabs functionality", () => {
-  test("Inputs By Name is display when component is first rendered", async () => {
+  test("Inputs By Name is displayed when component is first rendered", async () => {
     setup();
 
     const input = screen.getByLabelText("Name");

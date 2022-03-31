@@ -13,9 +13,15 @@ const ListItem = ({
         active &&
         "after:content-[''] after:w-full after:h-1 after:absolute after:bottom-0 after:left-0 after:bg-secondary-100"
       }`}
-      onClick={handleClick}
+      role="none"
     >
-      {text}
+      <button
+        role="menuitem"
+        data-testid="suggestion-item-list"
+        onClick={handleClick}
+      >
+        {text}
+      </button>
     </li>
   );
 };

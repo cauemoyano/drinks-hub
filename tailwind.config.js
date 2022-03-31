@@ -12,7 +12,7 @@ module.exports = {
           200: "#E85A4F",
         },
         tertiary: {
-          100: "#45A29E",
+          100: "#00817d",
         },
         neutral: {
           light: "#FCFAF2",
