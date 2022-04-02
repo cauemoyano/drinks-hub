@@ -1,13 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const SearchButton = ({ handleClick }: { handleClick: () => void }) => {
+const SearchButton = ({
+  handleClick,
+  textColor,
+}: {
+  handleClick: () => void;
+  textColor: string;
+}) => {
   return (
     <button
       onClick={handleClick}
       type="button"
       aria-label="Search"
-      className="p-2 text-xl text-tertiary-100 transition hover:scale-110"
+      className={`p-2 text-xl transition hover:scale-110 ${textColor}`}
     >
       <FontAwesomeIcon icon={faMagnifyingGlass} />
     </button>

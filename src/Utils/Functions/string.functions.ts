@@ -6,3 +6,7 @@ export const slugify = (str: string): string => {
     .replace(/[\s_-]+/g, "-")
     .replace(/^-+|-+$/g, "");
 };
+
+export const replaceSpaceByUnderline = (s: string) => {
+  return s.replace(/\s+/g, "_");
+};

@@ -1,15 +1,15 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import AutoCompleteInput from "../../../../Components/Form/AutoCompleteInput/AutoCompleteInput";
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import ListItem from "./Components/ListItem";
 import SearchInputWrapper from "./SearchInputWrapper";
-import { useDataApi } from "../../../../Utils/Hooks/useDataApi/useDataApi";
 import { useNavigate } from "react-router-dom";
 import {
   AppContext,
   AppContextType,
   InitialStateType,
 } from "../../../../Context/context";
+import { replaceSpaceByUnderline } from "../../../../Utils/Functions/string.functions";
 
 const SearchWrapper = () => {
   const [activeTab, setActiveTab] = useState<string>("name");
@@ -45,7 +45,7 @@ const SearchWrapper = () => {
   }, [ingredients]);
 
   const searchSubmit = (query: string) => {
-    navigate(`/list?type=${activeTab}&name=${query}`);
+    navigate(`/list?type=${activeTab}&name=${replaceSpaceByUnderline(query)}`);
   };
 
   return (

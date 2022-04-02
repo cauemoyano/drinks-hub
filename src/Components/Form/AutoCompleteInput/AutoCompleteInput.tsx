@@ -3,13 +3,31 @@ import { setTextRange } from "typescript";
 import SearchButton from "../../Buttons/SearchButton";
 import SuggestionsList from "./SuggestionsList";
 
+type ColorsProps = {
+  label: string;
+  border: string;
+  buttonTextColor: string;
+};
+
 type Props = {
   label: string;
   data: Array<string>;
   handleSubmit: (query: string) => void;
+  colors?: ColorsProps;
 };
 
-const AutoCompleteInput = ({ label, data, handleSubmit }: Props) => {
+const defaultColors = {
+  buttonTextColor: "text-tertiary-100",
+  label: "text-gray-800",
+  border: "border-secondary-100",
+};
+
+const AutoCompleteInput = ({
+  label,
+  data,
+  handleSubmit,
+  colors = defaultColors,
+}: Props) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -63,19 +81,23 @@ const AutoCompleteInput = ({ label, data, handleSubmit }: Props) => {
     <div className="flex flex-col flex-1 relative pt-4 mt-3">
       <label
         htmlFor="search-input"
-        className="absolute top-0 block duration-200 text-base text-gray-800"
+        className={`absolute top-0 block duration-200 text-base ${colors.label}`}
       >
         {label}
       </label>
       <div className="flex">
         <input
           id="search-input"
+          autoComplete="off"
           onChange={onChange}
           value={input}
           onKeyDown={onKeyDown}
-          className="w-full border-0 border-b-2 border-solid border-secondary-100 outline-none text-xl text-neutral-dark py-2 bg-transparent transition-colors duration-200 placeholder::text-transparent"
+          className={`w-full border-0 border-b-2 border-solid ${colors.border} outline-none text-xl text-neutral-dark py-2 bg-transparent transition-colors duration-200 placeholder::text-transparent`}
         />
-        <SearchButton handleClick={() => handleSubmit(input)} />
+        <SearchButton
+          handleClick={() => handleSubmit(input)}
+          textColor={colors.buttonTextColor}
+        />
       </div>
       {showSuggestions && input && (
         <SuggestionsList

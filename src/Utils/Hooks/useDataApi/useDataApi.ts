@@ -7,17 +7,22 @@ export const useDataApi = (initialState: any) => {
   const [apiUrl, setApiUrl] = useState("");
   const [data, setData] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
     let cancel = false;
     if (!cancel) setLoading(true);
+    if (!cancel) setFetched(false);
 
     if (!firstUpdate.current) {
       (async () => {
         if (!cancel) setLoading(true);
+
         try {
           const res = await axios.get(apiUrl);
+
           if (!cancel) setData(res.data);
+          if (!cancel) setFetched(true);
         } catch (error) {
           if (!cancel) setError(error);
         } finally {
@@ -33,5 +38,5 @@ export const useDataApi = (initialState: any) => {
     };
   }, [apiUrl]);
 
-  return { data, error, loading, callApi: setApiUrl };
+  return { data, error, loading, callApi: setApiUrl, fetched };
 };

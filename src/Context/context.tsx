@@ -41,7 +41,6 @@ const AppProvider: React.FC = ({ children }) => {
     setState((state) => ({ ...state, ingredients: payload }));
   };
   const setCategories = (payload: CategoryType) => {
-    console.log(payload);
     setState((state) => ({ ...state, categories: payload }));
   };
 

@@ -32,7 +32,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(categories, ingredients);
     if (categories) setCategories(categories);
     if (ingredients) setIngredients(ingredients);
   }, [ingredients, categories]);
