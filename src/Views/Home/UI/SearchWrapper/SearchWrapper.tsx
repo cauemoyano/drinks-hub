@@ -49,7 +49,7 @@ const SearchWrapper = () => {
   };
 
   return (
-    <section className="max-w-xs mx-auto">
+    <section className="max-w-xs mx-auto flex-grow">
       <div>
         <h2 className="text-lg text-tertiary-100 font-medium tracking-wide">
           Search

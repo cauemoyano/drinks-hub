@@ -10,3 +10,6 @@ export const slugify = (str: string): string => {
 export const replaceSpaceByUnderline = (s: string) => {
   return s.replace(/\s+/g, "_");
 };
+export const replaceUnderlineBySpace = (s: string) => {
+  return s.replace(/_/g, " ");
+};

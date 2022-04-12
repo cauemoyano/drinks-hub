@@ -37,7 +37,7 @@ function App() {
   }, [ingredients, categories]);
 
   return (
-    <div className="bg-neutral-light w-screen min-h-screen flex flex-col">
+    <div className="bg-neutral-light min-h-screen flex flex-col">
       <BrowserRouter>
         <NavBar />
         <main

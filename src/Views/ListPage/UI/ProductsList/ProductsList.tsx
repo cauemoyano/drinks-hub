@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { DrinkType } from "../../../../Types/DrinkType";
 import { DRINKS_API_ROOT } from "../../../../Utils/constants";
 import { useDataApi } from "../../../../Utils/Hooks/useDataApi/useDataApi";
+import ResultContent from "./ResultContent";
+import ResultHeader from "./ResultHeader";
 
 const ProductsList = ({
   type,
@@ -38,19 +39,18 @@ const ProductsList = ({
   }, [type, title]);
 
   return (
-    <section className="col-span-4">
+    <section className="col-span-4 pl-4">
       {((fetched && !data) || !data.drinks) && (
         <h2>We could not find any results for "{title}"</h2>
       )}
       {fetched && data && (
         <>
-          {data.drinks && <h3>{data.drinks.length} items</h3>}
-          <ul data-testid="item-list-wrapper">
-            {data.drinks &&
-              data.drinks.map((drink: DrinkType) => (
-                <li key={drink.idDrink}>{drink.strDrink}</li>
-              ))}
-          </ul>
+          <ResultContent
+            title={title}
+            type={type}
+            data={data.drinks}
+            offset={12}
+          />
         </>
       )}
     </section>

@@ -1,8 +1,10 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import { AppContext, AppContextType } from "../../../../Context/context";
 import { replaceSpaceByUnderline } from "../../../../Utils/Functions/string.functions";
+import LinksWrapper from "./LinksWrapper";
+import ShowButton from "./ShowButton";
 
 const Sidebar = ({
   type,
@@ -11,6 +13,8 @@ const Sidebar = ({
   type: string | null;
   title: string | null;
 }) => {
+  const [showCat, setShowCat] = useState(false);
+  const [showIng, setShowIng] = useState(false);
   const { state } = useContext(AppContext) || ({} as AppContextType);
   const { categories, ingredients } = state || {};
   const navigate = useNavigate();
@@ -47,39 +51,44 @@ const Sidebar = ({
           }}
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-4 flex flex-col">
         <h3 className="text-xl text-primary-100 mb-2">Category</h3>
-        <ul data-testid="category-links-wrapper">
-          {categories &&
-            categoriesLinks.map((category, i) => (
-              <li key={i} className="text-gray-50">
-                <Link
-                  to={`/list?type=category&name=${replaceSpaceByUnderline(
-                    category.strCategory
-                  )}`}
-                >
-                  {category.strCategory}
-                </Link>
-              </li>
-            ))}
-        </ul>
+
+        <LinksWrapper testid="category-links-wrapper">
+          <>
+            {categories &&
+              categoriesLinks.map((category, i) => (
+                <li key={i} className="text-gray-50">
+                  <Link
+                    to={`/list?type=category&name=${replaceSpaceByUnderline(
+                      category.strCategory
+                    )}`}
+                  >
+                    {category.strCategory}
+                  </Link>
+                </li>
+              ))}
+          </>
+        </LinksWrapper>
       </div>
       <div className="mb-4">
         <h3 className="text-xl text-primary-100 mb-2">Ingredient</h3>
-        <ul data-testid="ingredient-links-wrapper">
-          {ingredients &&
-            ingredientsLinks.map((ingredient, i) => (
-              <li key={i} className="text-gray-50">
-                <Link
-                  to={`/list?type=ingredient&name=${replaceSpaceByUnderline(
-                    ingredient.strIngredient1
-                  )}`}
-                >
-                  {ingredient.strIngredient1}
-                </Link>
-              </li>
-            ))}
-        </ul>
+        <LinksWrapper testid="ingredient-links-wrapper">
+          <>
+            {ingredients &&
+              ingredientsLinks.map((ingredient, i) => (
+                <li key={i} className="text-gray-50">
+                  <Link
+                    to={`/list?type=ingredient&name=${replaceSpaceByUnderline(
+                      ingredient.strIngredient1
+                    )}`}
+                  >
+                    {ingredient.strIngredient1}
+                  </Link>
+                </li>
+              ))}
+          </>
+        </LinksWrapper>
       </div>
     </aside>
   );
