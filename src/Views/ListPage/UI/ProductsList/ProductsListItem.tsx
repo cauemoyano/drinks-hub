@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 type Props = {
   img: string;
   name: string;
+  id: string;
 };
 
-const ProductsListItem = ({ img, name }: Props) => {
+const ProductsListItem = ({ img, name, id }: Props) => {
   return (
     <li className="block relative after:content[''] after:w-full after:h-3/4 after:absolute after:z-10 after:bottom-0 after:left-0 after:bg-primary-100">
-      <Link to="#">
+      <Link to={`/drink?id=${id}`}>
         <div className="flex flex-col px-3 h-full relative z-20">
           <img src={img} alt={name}></img>
           <div className="flex-1 flex items-center justify-center py-2">

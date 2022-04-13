@@ -13,3 +13,6 @@ export const replaceSpaceByUnderline = (s: string) => {
 export const replaceUnderlineBySpace = (s: string) => {
   return s.replace(/_/g, " ");
 };
+export const encodeSpaceForUrl = (url: string | undefined) => {
+  return url && url.replace(" ", `%20`);
+};

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { DrinkType } from "../../../../Types/DrinkType";
-import { sortDrinkListAscending } from "../../../../Utils/Functions/array.functions";
 import usePagination from "../../../../Utils/Hooks/usePagination/usePagination";
 import Pagination from "../Pagination/Pagination";
 import ProductsListItem from "./ProductsListItem";
@@ -44,6 +43,7 @@ const ResultContent = ({ data, offset, title, type }: Props) => {
             key={drink.idDrink}
             img={drink.strDrinkThumb}
             name={drink.strDrink}
+            id={drink.idDrink}
           />
         ))}
       </ul>

@@ -6,6 +6,7 @@ import { AppContext, AppContextType } from "../Context/context";
 import { useDataApi } from "../Utils/Hooks/useDataApi/useDataApi";
 import Home from "../Views/Home/Home";
 import ListPage from "../Views/ListPage/ListPage";
+import ProductPage from "../Views/ProductPage/ProductPage";
 
 function App() {
   const { setCategories, setIngredients } = useContext(
@@ -42,11 +43,12 @@ function App() {
         <NavBar />
         <main
           aria-labelledby="home-presentation"
-          className="flex-1 flex flex-col"
+          className="flex-1 flex flex-col overflow-hidden"
         >
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/list" element={<ListPage />}></Route>
+            <Route path="/drink" element={<ProductPage />}></Route>
           </Routes>
         </main>
       </BrowserRouter>

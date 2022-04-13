@@ -16,8 +16,6 @@ const usePagination = ({ initialItems, offset }: Props) => {
     return data.length;
   }, [data]);
 
-  console.log("hook");
-
   useEffect(() => {
     if (!items || !items.length) return;
 
