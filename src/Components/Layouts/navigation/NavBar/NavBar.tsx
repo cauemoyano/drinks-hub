@@ -4,7 +4,12 @@ const NavBar = () => {
   return (
     <header className="border-b" aria-label="site header">
       <nav className="flex" aria-label="main navigation">
-        <Link to="/" aria-label="Home" className="mx-auto">
+        <Link
+          to="/"
+          aria-label="Home"
+          className="mx-auto"
+          data-testid="home-link"
+        >
           <img
             src="./drinks-hub-icon.svg"
             alt="Drinks Hub icon"

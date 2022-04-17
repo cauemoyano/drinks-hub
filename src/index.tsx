@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App/App";
 import axe from "@axe-core/react";
 import { AppProvider } from "./Context/context";
+import { BrowserRouter } from "react-router-dom";
 
 if (process.env.NODE_ENV !== "production") {
   axe(React, ReactDOM, 1000);
@@ -12,7 +13,9 @@ if (process.env.NODE_ENV !== "production") {
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </AppProvider>
   </React.StrictMode>,
   document.getElementById("root")

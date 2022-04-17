@@ -1,32 +1,53 @@
 import React, { useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+
 import { DrinkType } from "../../Types/DrinkType";
 import { DRINKS_API_ROOT } from "../../Utils/constants";
 import { useDataApi } from "../../Utils/Hooks/useDataApi/useDataApi";
 import DrinkMainContainer from "./UI/DrinkMainContainer";
 import HowMakeContainer from "./UI/HowMakeContainer";
+import SuggestionsContainer from "./UI/Suggestions/SuggestionsContainer";
+import { LocationStateType } from "../../Types/LocationStateType";
 
 const ProductPage = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const id = searchParams.get("id");
   const url = `${DRINKS_API_ROOT}/lookup.php?i=${id}`;
 
-  const { data, callApi, fetched } = useDataApi(false);
+  const { data, callApi } = useDataApi(false);
 
   useEffect(() => {
     callApi(url);
-  }, []);
+  }, [id]);
+
+  const locationState = location.state as LocationStateType;
 
   const { drinks } = data || {};
   const drink: DrinkType | null = drinks ? drinks[0] : null;
   return (
     <article className="container p-4 mx-auto max-w-6xl">
-      {drink && (
+      <div className="flex py-4">
+        <button
+          className="ml-4 text-tertiary-100 text-xl"
+          onClick={() => {
+            if (drink) {
+              navigate(-1 - locationState.sequence);
+            } else {
+              navigate("/");
+            }
+          }}
+        >
+          <FontAwesomeIcon icon={faAngleLeft} className="mr-2" />
+          Back to Results
+        </button>
+      </div>
+      {drink ? (
         <>
-          <div className="flex py-4">
-            <Link to="#">back</Link>
-          </div>
           <div className="grid grid-cols-2">
             <DrinkMainContainer drink={drink} />
             <div className="col-span-1 grid grid-cols-5">
@@ -37,8 +58,17 @@ const ProductPage = () => {
           </div>
           <div className="grid grid-cols-2">
             <HowMakeContainer instructions={drink.strInstructions} />
-            <div className="col-span-1"></div>
+            <SuggestionsContainer category={drink.strCategory} />
           </div>
+        </>
+      ) : (
+        <>
+          <h1 className="font-headings text-3xl font-semibold text-secondary-200 mb-6">
+            Sorry, no matching drink was found.
+          </h1>
+          <p className="text-gray-800 text-lg mb-4">
+            Go back to our drinks page and try again.
+          </p>
         </>
       )}
     </article>

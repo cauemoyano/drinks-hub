@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import NavBar from "../Components/Layouts/navigation/NavBar/NavBar";
 import { AppContext, AppContextType } from "../Context/context";
 import { useDataApi } from "../Utils/Hooks/useDataApi/useDataApi";
 import Home from "../Views/Home/Home";
 import ListPage from "../Views/ListPage/ListPage";
+import NotFound from "../Views/NotFound/NotFound";
 import ProductPage from "../Views/ProductPage/ProductPage";
 
 function App() {
@@ -39,19 +40,19 @@ function App() {
 
   return (
     <div className="bg-neutral-light min-h-screen flex flex-col">
-      <BrowserRouter>
-        <NavBar />
-        <main
-          aria-labelledby="home-presentation"
-          className="flex-1 flex flex-col overflow-hidden"
-        >
-          <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/list" element={<ListPage />}></Route>
-            <Route path="/drink" element={<ProductPage />}></Route>
-          </Routes>
-        </main>
-      </BrowserRouter>
+      <NavBar />
+      <main
+        aria-labelledby="home-presentation"
+        className="flex-1 flex flex-col overflow-hidden"
+      >
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/list" element={<ListPage />}></Route>
+          <Route path="/drink" element={<ProductPage />}></Route>
+          <Route path="/404" element={<NotFound />}></Route>
+          <Route path="*" element={<Navigate replace to="/404" />} />
+        </Routes>
+      </main>
     </div>
   );
 }

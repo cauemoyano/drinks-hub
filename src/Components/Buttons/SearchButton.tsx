@@ -14,6 +14,7 @@ const SearchButton = ({
       type="button"
       aria-label="Search"
       className={`p-2 text-xl transition hover:scale-110 ${textColor}`}
+      data-testid="search-button"
     >
       <FontAwesomeIcon icon={faMagnifyingGlass} />
     </button>

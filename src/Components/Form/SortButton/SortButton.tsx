@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   options: string[];
@@ -20,7 +20,7 @@ const SortButton = ({ options, activeOption, setActiveoption }: Props) => {
         onClick={() => toggleShowOptions(!showOptions)}
         className="bg-secondary-100 px-3 py-1"
       >
-        Sort: {options[activeOption]} <FontAwesomeIcon icon={faAnglesDown} />
+        Sort: {options[activeOption]} <FontAwesomeIcon icon={faAngleDown} />
       </button>
       <ul
         tabIndex={-1}

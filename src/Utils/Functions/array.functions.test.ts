@@ -1,5 +1,5 @@
-import { faFontAwesomeLogoFull } from "@fortawesome/free-solid-svg-icons";
 import {
+  decreaseAndShuffle,
   sortDrinkListAscending,
   sortDrinkListDescending,
 } from "./array.functions";
@@ -24,4 +24,16 @@ describe("test sorting items list", () => {
 
     expect(items[0].idDrink).toBe("10");
   });
+});
+
+test("test decreasing and sorting the size of an array", () => {
+  const data = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+
+  const res = decreaseAndShuffle(data, 6);
+
+  expect(res.length).toEqual(6);
+
+  const isArrayUnique = new Set(res).size === res.length;
+
+  expect(isArrayUnique).toBeTruthy();
 });
