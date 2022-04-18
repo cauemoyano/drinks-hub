@@ -21,7 +21,7 @@ const IngredientsContainer = ({ ingredients, measures }: Props) => {
             onMouseEnter={() => setIngredientToShow(ingredient)}
           >
             {measures[i]}
-            {ingredient}
+            <span className="ml-1">{ingredient}</span>
           </li>
         ))}
       </ul>

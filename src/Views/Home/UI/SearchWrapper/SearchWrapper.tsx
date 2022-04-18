@@ -3,7 +3,7 @@ import AutoCompleteInput from "../../../../Components/Form/AutoCompleteInput/Aut
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import ListItem from "./Components/ListItem";
 import SearchInputWrapper from "./SearchInputWrapper";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   AppContext,
   AppContextType,
@@ -17,6 +17,7 @@ const SearchWrapper = () => {
   const { ingredients, categories } = state || ({} as InitialStateType);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const listData = ["name", "category", "ingredient"];
 
@@ -45,15 +46,17 @@ const SearchWrapper = () => {
   }, [ingredients]);
 
   const searchSubmit = (query: string) => {
-    navigate(`/list?type=${activeTab}&name=${replaceSpaceByUnderline(query)}`);
+    navigate(`/list?type=${activeTab}&name=${replaceSpaceByUnderline(query)}`, {
+      state: { prevPath: location.pathname },
+    });
   };
 
   return (
     <section className="max-w-xs mx-auto flex-grow">
       <div>
-        <h2 className="text-lg text-tertiary-100 font-medium tracking-wide">
+        {/*  <h2 className="text-lg text-tertiary-100 font-medium tracking-wide">
           Search
-        </h2>
+        </h2> */}
         <nav aria-label="search tabs">
           <ul className="flex space-x-3" role="menu" aria-label="search tabs">
             {listData.map((item, index) => (

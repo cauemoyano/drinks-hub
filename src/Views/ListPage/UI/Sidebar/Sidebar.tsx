@@ -1,8 +1,9 @@
 import React, { useContext, useMemo, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import { AppContext, AppContextType } from "../../../../Context/context";
 import { replaceSpaceByUnderline } from "../../../../Utils/Functions/string.functions";
+import StatefulLink from "../../../../Utils/StatefulLink";
 import LinksWrapper from "./LinksWrapper";
 import ShowButton from "./ShowButton";
 
@@ -18,9 +19,12 @@ const Sidebar = ({
   const { state } = useContext(AppContext) || ({} as AppContextType);
   const { categories, ingredients } = state || {};
   const navigate = useNavigate();
+  const location = useLocation();
 
   const searchSubmit = (input: string) => {
-    navigate(`/list?type=name&name=${replaceSpaceByUnderline(input)}`);
+    navigate(`/list?type=name&name=${replaceSpaceByUnderline(input)}`, {
+      state: { prevPath: location.pathname },
+    });
   };
 
   const categoriesLinks = useMemo(() => {
@@ -59,13 +63,13 @@ const Sidebar = ({
             {categories &&
               categoriesLinks.map((category, i) => (
                 <li key={i} className="text-gray-50">
-                  <Link
+                  <StatefulLink
                     to={`/list?type=category&name=${replaceSpaceByUnderline(
                       category.strCategory
                     )}`}
                   >
                     {category.strCategory}
-                  </Link>
+                  </StatefulLink>
                 </li>
               ))}
           </>
@@ -78,13 +82,13 @@ const Sidebar = ({
             {ingredients &&
               ingredientsLinks.map((ingredient, i) => (
                 <li key={i} className="text-gray-50">
-                  <Link
+                  <StatefulLink
                     to={`/list?type=ingredient&name=${replaceSpaceByUnderline(
                       ingredient.strIngredient1
                     )}`}
                   >
                     {ingredient.strIngredient1}
-                  </Link>
+                  </StatefulLink>
                 </li>
               ))}
           </>

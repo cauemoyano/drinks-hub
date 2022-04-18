@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import NavBar from "../Components/Layouts/navigation/NavBar/NavBar";
 import { AppContext, AppContextType } from "../Context/context";
@@ -8,6 +8,7 @@ import Home from "../Views/Home/Home";
 import ListPage from "../Views/ListPage/ListPage";
 import NotFound from "../Views/NotFound/NotFound";
 import ProductPage from "../Views/ProductPage/ProductPage";
+import AnimatedRoutes from "./AnimatedRoutes";
 
 function App() {
   const { setCategories, setIngredients } = useContext(
@@ -43,15 +44,9 @@ function App() {
       <NavBar />
       <main
         aria-labelledby="home-presentation"
-        className="flex-1 flex flex-col overflow-hidden"
+        className="flex-1 flex flex-col overflow-hidden relative"
       >
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/list" element={<ListPage />}></Route>
-          <Route path="/drink" element={<ProductPage />}></Route>
-          <Route path="/404" element={<NotFound />}></Route>
-          <Route path="*" element={<Navigate replace to="/404" />} />
-        </Routes>
+        <AnimatedRoutes />
       </main>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { LocationStateType } from "../../../../Types/LocationStateType";
+import StatefulLink from "../../../../Utils/StatefulLink";
 
 type Props = {
   img: string;
@@ -15,10 +16,10 @@ const ProductsListItem = ({ img, name, id }: Props) => {
 
   return (
     <li className="block relative min-w-[160px] after:content[''] after:w-full after:h-3/4 after:absolute after:z-10 after:bottom-0 after:left-0 after:bg-primary-100">
-      <Link
+      <StatefulLink
         to={`/drink?id=${id}`}
         state={{
-          from: location.pathname,
+          prevPath: location.pathname,
           sequence: location.pathname === "/drink" ? state.sequence + 1 : 0,
         }}
       >
@@ -30,7 +31,7 @@ const ProductsListItem = ({ img, name, id }: Props) => {
             </h4>
           </div>
         </div>
-      </Link>
+      </StatefulLink>
     </li>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -19,9 +19,9 @@ const ProductPage = () => {
   const id = searchParams.get("id");
   const url = `${DRINKS_API_ROOT}/lookup.php?i=${id}`;
 
-  const { data, callApi } = useDataApi(false);
+  const { data, callApi, fetched } = useDataApi(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     callApi(url);
   }, [id]);
 
@@ -29,8 +29,9 @@ const ProductPage = () => {
 
   const { drinks } = data || {};
   const drink: DrinkType | null = drinks ? drinks[0] : null;
+
   return (
-    <article className="container p-4 mx-auto max-w-6xl">
+    <article className="container p-4 mx-auto max-w-6xl page">
       <div className="flex py-4">
         <button
           className="ml-4 text-tertiary-100 text-xl"
@@ -46,22 +47,26 @@ const ProductPage = () => {
           Back to Results
         </button>
       </div>
-      {drink ? (
+
+      {drink && (
         <>
           <div className="grid grid-cols-2">
             <DrinkMainContainer drink={drink} />
-            <div className="col-span-1 grid grid-cols-5">
-              <div className="col-span-4 pr-8 flex items-end relative z-20 after:content[''] after:absolute after:bottom-0 after:left-1/2 after:h-[200rem] after:w-[200rem] after:-z-10 after:bg-secondary-100">
-                <img src={drink.strDrinkThumb} alt={drink.strDrink} />
+            {drink.strDrinkThumb && (
+              <div className="col-span-1 grid grid-cols-5">
+                <div className="col-span-4 pr-8 flex items-end relative z-20 after:content[''] after:absolute after:bottom-0 after:left-1/2 after:h-[200rem] after:w-[200rem] after:-z-10 after:bg-secondary-100">
+                  <img src={drink.strDrinkThumb} alt={drink.strDrink} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="grid grid-cols-2">
             <HowMakeContainer instructions={drink.strInstructions} />
             <SuggestionsContainer category={drink.strCategory} />
           </div>
         </>
-      ) : (
+      )}
+      {fetched && !drink && (
         <>
           <h1 className="font-headings text-3xl font-semibold text-secondary-200 mb-6">
             Sorry, no matching drink was found.
