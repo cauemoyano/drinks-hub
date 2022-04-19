@@ -34,7 +34,7 @@ const ResultHeader = ({ length, type, title, data, setDataSorted }: Props) => {
       <h3 className="mr-8 text-lg">
         {length} results for{" "}
         {`${type && type.charAt(0).toUpperCase() + type.slice(1)}: `}
-        <span className="text-secondary-200">
+        <span className="text-secondary-300">
           {title && replaceUnderlineBySpace(title)}
         </span>
       </h3>

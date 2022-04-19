@@ -28,7 +28,7 @@ const SortButton = ({ options, activeOption, setActiveoption }: Props) => {
         aria-activedescendant={options[activeOption]}
         className={`${
           showOptions ? "block" : "hidden"
-        } absolute bottom-0 left-0 translate-y-full bg-primary-200 w-full py-1 px-2`}
+        } absolute bottom-0 left-0 translate-y-full bg-primary-200 w-full`}
       >
         {options.map((option, i) => (
           <li
@@ -41,7 +41,7 @@ const SortButton = ({ options, activeOption, setActiveoption }: Props) => {
               setActiveoption(i);
               toggleShowOptions(false);
             }}
-            className="cursor-pointer"
+            className="cursor-pointer hover:bg-primary-100 transition-all px-2 py-1"
           >
             {option}
           </li>

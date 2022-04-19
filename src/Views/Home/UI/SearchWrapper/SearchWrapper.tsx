@@ -54,9 +54,6 @@ const SearchWrapper = () => {
   return (
     <section className="max-w-xs mx-auto flex-grow">
       <div>
-        {/*  <h2 className="text-lg text-tertiary-100 font-medium tracking-wide">
-          Search
-        </h2> */}
         <nav aria-label="search tabs">
           <ul className="flex space-x-3" role="menu" aria-label="search tabs">
             {listData.map((item, index) => (

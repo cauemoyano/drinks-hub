@@ -20,7 +20,7 @@ const Suggestions = ({ data }: { data: DrinkType[] }) => {
         onClick={slideLeft}
         className={`${
           showBtnLeft ? "visible" : "invisible"
-        } text-2xl text-tertiary-100 pr-3`}
+        } text-2xl text-tertiary-100 pr-3 transition-all hover:text-tertiary-200`}
       >
         <FontAwesomeIcon icon={faAngleLeft} />
       </button>
@@ -33,6 +33,7 @@ const Suggestions = ({ data }: { data: DrinkType[] }) => {
               img={drink.strDrinkThumb}
               name={drink.strDrink}
               id={drink.idDrink}
+              animated={false}
             />
           ))}
         </ul>
@@ -43,7 +44,7 @@ const Suggestions = ({ data }: { data: DrinkType[] }) => {
         onClick={slideRight}
         className={`${
           showBtnRight ? "visible" : "invisible"
-        } text-2xl text-tertiary-100 pl-3`}
+        } text-2xl text-tertiary-100 pl-3 transition-all hover:text-tertiary-200`}
       >
         <FontAwesomeIcon icon={faAngleRight} />
       </button>

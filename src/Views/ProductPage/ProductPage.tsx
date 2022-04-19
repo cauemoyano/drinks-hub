@@ -34,7 +34,7 @@ const ProductPage = () => {
     <article className="container p-4 mx-auto max-w-6xl page">
       <div className="flex py-4">
         <button
-          className="ml-4 text-tertiary-100 text-xl"
+          className="ml-4 text-tertiary-100 text-xl transition-all hover:text-tertiary-200"
           onClick={() => {
             if (drink) {
               navigate(-1 - locationState.sequence);

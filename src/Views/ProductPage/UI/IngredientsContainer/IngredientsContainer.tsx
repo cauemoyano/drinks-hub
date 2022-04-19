@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
 import { encodeSpaceForUrl } from "../../../../Utils/Functions/string.functions";
 
 type Props = {
@@ -16,7 +17,7 @@ const IngredientsContainer = ({ ingredients, measures }: Props) => {
       <ul className="col-span-1 mb-4 flex flex-col justify-center">
         {ingredients.map((ingredient, i) => (
           <li
-            className="text-lg text-gray-600 py-1 cursor-pointer"
+            className="text-lg text-gray-600 py-1 cursor-pointer transition-all hover:text-tertiary-200"
             key={i}
             onMouseEnter={() => setIngredientToShow(ingredient)}
           >
@@ -32,6 +33,7 @@ const IngredientsContainer = ({ ingredients, measures }: Props) => {
             ingredientToShow
           )}-Medium.png`}
           onError={(e: any) => (e.target.src = "/images/img-placeholder.png")}
+          alt={`illustration for ingredient ${ingredientToShow}`}
         ></img>
       </div>
     </div>

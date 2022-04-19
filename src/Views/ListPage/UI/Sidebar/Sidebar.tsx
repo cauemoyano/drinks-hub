@@ -42,27 +42,30 @@ const Sidebar = ({
     );
   }, [ingredients, title]);
   return (
-    <aside className="col-span-1 p-4 relative z-10 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:h-full before:w-[50vw] before:bg-secondary-200 before:z-[-1]">
-      <h2 className="text-2xl text-white">Search</h2>
+    <aside className="col-span-1 p-4 relative z-10 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:h-full before:w-[50vw] before:bg-secondary-100 before:z-[-1]">
+      <h2 className="text-2xl text-neutral-dark">Search</h2>
       <div className="mb-4">
         <TextInput
           label={"Name"}
           handleSubmit={searchSubmit}
           colors={{
-            buttonTextColor: "text-tertiary-100",
-            label: "text-gray-200",
-            border: "border-primary-100",
+            buttonTextColor: "text-gray-700",
+            label: "text-gray-800",
+            border: "border-neutral-dark",
           }}
         />
       </div>
       <div className="mb-4 flex flex-col">
-        <h3 className="text-xl text-primary-100 mb-2">Category</h3>
+        <h3 className="text-xl text-gray-800 mb-2">Category</h3>
 
         <LinksWrapper testid="category-links-wrapper">
           <>
             {categories &&
               categoriesLinks.map((category, i) => (
-                <li key={i} className="text-gray-50">
+                <li
+                  key={i}
+                  className="text-gray-700 hover:text-gray-600 transition-all easy-in-out"
+                >
                   <StatefulLink
                     to={`/list?type=category&name=${replaceSpaceByUnderline(
                       category.strCategory
@@ -75,13 +78,16 @@ const Sidebar = ({
           </>
         </LinksWrapper>
       </div>
-      <div className="mb-4">
-        <h3 className="text-xl text-primary-100 mb-2">Ingredient</h3>
+      <div className="mb-4 flex flex-col">
+        <h3 className="text-xl text-gray-800 mb-2">Ingredient</h3>
         <LinksWrapper testid="ingredient-links-wrapper">
           <>
             {ingredients &&
               ingredientsLinks.map((ingredient, i) => (
-                <li key={i} className="text-gray-50">
+                <li
+                  key={i}
+                  className="text-gray-700 hover:text-gray-600 transition-all easy-in-out"
+                >
                   <StatefulLink
                     to={`/list?type=ingredient&name=${replaceSpaceByUnderline(
                       ingredient.strIngredient1

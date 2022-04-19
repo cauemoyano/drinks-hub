@@ -11,12 +11,14 @@ const SuggestionsList = ({
 }) => {
   return filteredSuggestions.length ? (
     <ul
-      className="rounded bg-gray-100 overflow-auto max-h-36"
+      className="rounded bg-primary-200 overflow-auto max-h-36 suggestions-autocomplete"
       role="presentation"
     >
       {filteredSuggestions.map((suggestion, index) => {
         const className = `py-2 px-2 cursor-pointer ${
-          index === activeSuggestionIndex ? "bg-white font-bold" : "bg-gray-100"
+          index === activeSuggestionIndex
+            ? "bg-secondary-100 text-white font-bold"
+            : "bg-primary-100 text-tertiary-100"
         }`;
         return (
           <li className={className} key={suggestion} onClick={onClick}>

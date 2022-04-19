@@ -21,7 +21,6 @@ const AnimatedRoutes = () => {
           <Route path="/list" element={<ListPage />}></Route>
           <Route path="/drink" element={<ProductPage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-          {/* <Route path="*" element={<Navigate replace to="/404" />} /> */}
         </Routes>
       </CSSTransition>
     </TransitionGroup>

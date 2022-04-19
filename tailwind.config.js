@@ -10,9 +10,11 @@ module.exports = {
         secondary: {
           100: "#E98074",
           200: "#E85A4F",
+          300: "#de2b01",
         },
         tertiary: {
           100: "#00817d",
+          200: "#003634",
         },
         neutral: {
           light: "#FCFAF2",

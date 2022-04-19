@@ -39,7 +39,7 @@ const ProductsList = ({
   }, [type, title]);
 
   return (
-    <section className="col-span-4 pl-4">
+    <section className="col-span-4 pl-4 pb-4">
       {((fetched && !data) || !data.drinks) && (
         <h2>We could not find any results for "{title}"</h2>
       )}

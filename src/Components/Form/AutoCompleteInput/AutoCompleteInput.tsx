@@ -50,9 +50,10 @@ const AutoCompleteInput = ({
   const onClick = (e: React.MouseEvent<HTMLElement>) => {
     setFilteredSuggestions([]);
     const itemClicked = e.target as HTMLElement;
-    setInput(itemClicked.innerText);
+    handleSubmit(itemClicked.innerText);
+    /* setInput(itemClicked.innerText);
     setActiveSuggestionIndex(0);
-    setShowSuggestions(false);
+    setShowSuggestions(false); */
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {

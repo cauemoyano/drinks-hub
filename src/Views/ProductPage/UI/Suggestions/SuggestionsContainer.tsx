@@ -27,9 +27,9 @@ const SuggestionsContainer = ({
 
   return (
     <div className="col-span-1 p-4">
-      <h2 className="text-4xl font-semibold text-gray-700 mb-2">
+      <h3 className="text-4xl font-semibold text-gray-700 mb-2">
         You might also like
-      </h2>
+      </h3>
       <Suggestions data={suggestions} />
     </div>
   );

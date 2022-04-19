@@ -9,7 +9,7 @@ const ListPage = () => {
   const type = searchParams.get("type");
 
   return (
-    <article className="container p-4 mx-auto flex flex-col flex-1 page">
+    <article className="container pt-4 px-4 mx-auto flex flex-col flex-1 page">
       <h1 className="font-headings text-5xl text-center font-semibold text-secondary-200 mb-4">
         Drinks List
       </h1>
