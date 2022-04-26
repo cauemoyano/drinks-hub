@@ -10,12 +10,12 @@ import ShowButton from "./ShowButton";
 const Sidebar = ({
   type,
   title,
+  handleClose = () => {},
 }: {
   type: string | null;
   title: string | null;
+  handleClose?: { (): void };
 }) => {
-  const [showCat, setShowCat] = useState(false);
-  const [showIng, setShowIng] = useState(false);
   const { state } = useContext(AppContext) || ({} as AppContextType);
   const { categories, ingredients } = state || {};
   const navigate = useNavigate();
@@ -25,6 +25,9 @@ const Sidebar = ({
     navigate(`/list?type=name&name=${replaceSpaceByUnderline(input)}`, {
       state: { prevPath: location.pathname },
     });
+    if (handleClose) {
+      handleClose();
+    }
   };
 
   const categoriesLinks = useMemo(() => {
@@ -42,8 +45,10 @@ const Sidebar = ({
     );
   }, [ingredients, title]);
   return (
-    <aside className="col-span-1 p-4 relative z-10 before:content-[''] before:absolute before:top-0 before:bottom-0 before:right-0 before:h-full before:w-[50vw] before:bg-secondary-100 before:z-[-1]">
-      <h2 className="text-2xl text-neutral-dark">Search</h2>
+    <>
+      <h2 className="text-2xl text-neutral-dark font-headings font-semibold text-tertiary-200">
+        Search
+      </h2>
       <div className="mb-4">
         <TextInput
           label={"Name"}
@@ -56,7 +61,9 @@ const Sidebar = ({
         />
       </div>
       <div className="mb-4 flex flex-col">
-        <h3 className="text-xl text-gray-800 mb-2">Category</h3>
+        <h3 className="text-xl mb-2 font-headings font-semibold text-secondary-300">
+          Category
+        </h3>
 
         <LinksWrapper testid="category-links-wrapper">
           <>
@@ -65,6 +72,7 @@ const Sidebar = ({
                 <li
                   key={i}
                   className="text-gray-700 hover:text-gray-600 transition-all easy-in-out"
+                  onClick={handleClose}
                 >
                   <StatefulLink
                     to={`/list?type=category&name=${replaceSpaceByUnderline(
@@ -79,7 +87,9 @@ const Sidebar = ({
         </LinksWrapper>
       </div>
       <div className="mb-4 flex flex-col">
-        <h3 className="text-xl text-gray-800 mb-2">Ingredient</h3>
+        <h3 className="text-xl text-gray-800 mb-2 font-headings font-semibold text-secondary-300">
+          Ingredient
+        </h3>
         <LinksWrapper testid="ingredient-links-wrapper">
           <>
             {ingredients &&
@@ -87,6 +97,7 @@ const Sidebar = ({
                 <li
                   key={i}
                   className="text-gray-700 hover:text-gray-600 transition-all easy-in-out"
+                  onClick={handleClose}
                 >
                   <StatefulLink
                     to={`/list?type=ingredient&name=${replaceSpaceByUnderline(
@@ -100,7 +111,7 @@ const Sidebar = ({
           </>
         </LinksWrapper>
       </div>
-    </aside>
+    </>
   );
 };
 

@@ -48,6 +48,7 @@ const ProductsListItem = ({ img, name, id, index, animated = true }: Props) => {
         <div className="group flex flex-col px-3 h-full relative z-20">
           <div className="overflow-hidden">
             <img
+              loading="lazy"
               src={img}
               alt={`illustration image for ${name}`}
               className="group-hover:scale-110 transition-all"

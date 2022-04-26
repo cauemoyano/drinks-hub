@@ -51,9 +51,6 @@ const AutoCompleteInput = ({
     setFilteredSuggestions([]);
     const itemClicked = e.target as HTMLElement;
     handleSubmit(itemClicked.innerText);
-    /* setInput(itemClicked.innerText);
-    setActiveSuggestionIndex(0);
-    setShowSuggestions(false); */
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -94,10 +91,6 @@ const AutoCompleteInput = ({
           value={input}
           onKeyDown={onKeyDown}
           className={`w-full border-0 border-b-2 border-solid ${colors.border} outline-none text-xl text-neutral-dark py-2 bg-transparent transition-colors duration-200 placeholder::text-transparent`}
-        />
-        <SearchButton
-          handleClick={() => handleSubmit(input)}
-          textColor={colors.buttonTextColor}
         />
       </div>
       {showSuggestions && input && (

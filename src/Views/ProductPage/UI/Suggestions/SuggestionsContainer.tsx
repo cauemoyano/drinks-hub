@@ -26,8 +26,8 @@ const SuggestionsContainer = ({
   if (!data) return null;
 
   return (
-    <div className="col-span-1 p-4">
-      <h3 className="text-4xl font-semibold text-gray-700 mb-2">
+    <div className="col-span-1 xs:px-4 py-6 relative z-30">
+      <h3 className="text-3xl xs:text-4xl font-headings font-semibold text-tertiary-200 mb-4">
         You might also like
       </h3>
       <Suggestions data={suggestions} />

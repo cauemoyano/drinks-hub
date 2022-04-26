@@ -1,6 +1,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      xs: "481px",
+      sm: "576px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
     extend: {
       colors: {
         primary: {
@@ -26,6 +34,14 @@ module.exports = {
         sans: ["Roboto", "sans-serif"],
         headings: ['"Josefin Sans"', "sans-serif"],
       },
+      /* screens: {
+        xs: "481px",
+        sm: "576px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+      }, */
     },
   },
   plugins: [],

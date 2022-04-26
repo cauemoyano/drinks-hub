@@ -30,11 +30,11 @@ const ResultHeader = ({ length, type, title, data, setDataSorted }: Props) => {
   }, [data, activeOption]);
 
   return (
-    <div className="p-4 flex border-b justify-between align-center relative z-20">
-      <h3 className="mr-8 text-lg">
+    <div className="p-4 xs:flex border-b justify-between align-center relative z-20">
+      <h3 className="mr-8 xs:text-lg text-gray-700 mb-2 xs:mb-0">
         {length} results for{" "}
         {`${type && type.charAt(0).toUpperCase() + type.slice(1)}: `}
-        <span className="text-secondary-300">
+        <span className="text-secondary-200 font-semibold">
           {title && replaceUnderlineBySpace(title)}
         </span>
       </h3>

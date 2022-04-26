@@ -11,7 +11,7 @@ const SuggestionsList = ({
 }) => {
   return filteredSuggestions.length ? (
     <ul
-      className="rounded bg-primary-200 overflow-auto max-h-36 suggestions-autocomplete"
+      className="rounded bg-primary-200 overflow-auto max-h-36 suggestions-autocomplete absolute bottom-0 left-0 w-full translate-y-full"
       role="presentation"
     >
       {filteredSuggestions.map((suggestion, index) => {

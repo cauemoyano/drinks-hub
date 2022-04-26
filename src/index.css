@@ -57,3 +57,17 @@
     opacity: 1;
   }
 }
+
+.home-bg::after {
+  background-image: url(/public/images/drinks-home-bg-land.png);
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .home-bg::after {
+    background-image: url(/public/images/drinks-home-bg.png);
+    background-size: cover;
+    background-position: center;
+  }
+}

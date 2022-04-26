@@ -11,7 +11,7 @@ export const useDataApi = (initialState: any) => {
 
   useEffect(() => {
     let cancel = false;
-    if (!cancel) setLoading(true);
+
     if (!cancel) setFetched(false);
 
     if (!firstUpdate.current) {

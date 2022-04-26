@@ -36,7 +36,7 @@ const ResultContent = ({ data, offset, title, type }: Props) => {
       )}
       <ul
         data-testid="item-list-wrapper"
-        className="p-4 grid grid-cols-4 gap-4 relative z-10"
+        className="p-4 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10"
       >
         {pageData.map((drink: DrinkType, i: number) => (
           <ProductsListItem

@@ -21,10 +21,10 @@ describe("search tabs functionality", () => {
     const input = screen.getByLabelText("Name");
     expect(input).toBeVisible();
   });
-  test("By Category tab selected", async () => {
+  test("Category tab selected", async () => {
     const { tabs } = setup();
 
-    const tabByCategory = tabs.find((tab) => tab.textContent === "By Category");
+    const tabByCategory = tabs.find((tab) => tab.textContent === "Category");
     if (tabByCategory) {
       fireEvent.click(tabByCategory);
     }
@@ -36,7 +36,7 @@ describe("search tabs functionality", () => {
     const { tabs } = setup();
 
     const tabByIngredient = tabs.find(
-      (tab) => tab.textContent === "By Ingredient"
+      (tab) => tab.textContent === "Ingredient"
     );
     if (tabByIngredient) {
       fireEvent.click(tabByIngredient);

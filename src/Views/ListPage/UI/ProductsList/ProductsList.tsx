@@ -15,7 +15,7 @@ const ProductsList = ({
   const byCategory = `${DRINKS_API_ROOT}/filter.php?c=${title}`;
   const byIngredient = `${DRINKS_API_ROOT}/filter.php?i=${title}`;
 
-  const { data, callApi, fetched } = useDataApi(false);
+  const { data, callApi, fetched, loading } = useDataApi(false);
 
   useEffect(() => {
     let url;
@@ -39,11 +39,11 @@ const ProductsList = ({
   }, [type, title]);
 
   return (
-    <section className="col-span-4 pl-4 pb-4">
-      {((fetched && !data) || !data.drinks) && (
+    <section className="col-span-4 lg:pl-4 pb-4">
+      {!loading && !data?.drinks && (
         <h2>We could not find any results for "{title}"</h2>
       )}
-      {fetched && data && (
+      {!loading && data && (
         <>
           <ResultContent
             title={title}

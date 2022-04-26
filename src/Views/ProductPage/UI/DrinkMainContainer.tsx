@@ -30,10 +30,9 @@ const DrinkMainContainer = ({ drink }: { drink: DrinkType }) => {
 
   return (
     <div className="col-span-1 pl-4 flex flex-col">
-      <h1 className="font-headings text-5xl font-semibold text-secondary-200 mb-4">
-        {strDrink}
-      </h1>
-      <h2 className="text-4xl font-semibold text-gray-700 mb-2">Ingredients</h2>
+      <h2 className="text-center sm:text-left text-3xl xs:text-4xl font-headings font-semibold text-tertiary-200 mb-2">
+        Ingredients
+      </h2>
       <IngredientsContainer ingredients={ingredients} measures={measures} />
     </div>
   );

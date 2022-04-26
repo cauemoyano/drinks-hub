@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
 import StatefulLink from "../../../../Utils/StatefulLink";
+import Menu from "./UI/Menu";
 
 const NavBar = () => {
   return (
-    <header className="border-b" aria-label="site header">
-      <nav className="flex" aria-label="main navigation">
-        <StatefulLink
-          to="/"
-          aria-label="Home"
-          className="mx-auto"
-          dataTestid="home-link"
-        >
+    <header
+      className="border-b relative flex sm:justify-center"
+      aria-label="site header"
+    >
+      <h1 aria-label="Home" className="w-max ">
+        <StatefulLink to="/" className="mx-auto" dataTestid="home-link">
           <img
             src="./drinks-hub-icon.svg"
             alt="Drinks Hub icon"
-            className="p-3"
+            className="p-2 sm:p-3 max-w-[10rem] sm:max-w-full"
           />
         </StatefulLink>
-      </nav>
+      </h1>
+      <Menu />
     </header>
   );
 };

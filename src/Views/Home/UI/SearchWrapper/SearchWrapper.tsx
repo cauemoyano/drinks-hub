@@ -1,9 +1,15 @@
 import { useContext, useMemo, useState } from "react";
+import {
+  faFont,
+  faFolderTree,
+  faWineBottle,
+} from "@fortawesome/free-solid-svg-icons";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import AutoCompleteInput from "../../../../Components/Form/AutoCompleteInput/AutoCompleteInput";
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import ListItem from "./Components/ListItem";
 import SearchInputWrapper from "./SearchInputWrapper";
-import { useLocation, useNavigate } from "react-router-dom";
 import {
   AppContext,
   AppContextType,
@@ -19,7 +25,11 @@ const SearchWrapper = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const listData = ["name", "category", "ingredient"];
+  const listData = [
+    { name: "name", icon: faFont },
+    { name: "category", icon: faFolderTree },
+    { name: "ingredient", icon: faWineBottle },
+  ];
 
   const categoriesData = useMemo(() => {
     if (!categories) return [];
@@ -53,39 +63,41 @@ const SearchWrapper = () => {
 
   return (
     <section className="max-w-xs mx-auto flex-grow">
-      <div>
-        <nav aria-label="search tabs">
-          <ul className="flex space-x-3" role="menu" aria-label="search tabs">
-            {listData.map((item, index) => (
-              <ListItem
-                text={`By ${item.charAt(0).toUpperCase() + item.slice(1)}`}
-                key={index}
-                active={activeTab === item ? true : false}
-                handleClick={() => setActiveTab(item)}
-              />
-            ))}
-          </ul>
-        </nav>
-      </div>
-      <div>
-        <SearchInputWrapper>
-          {activeTab === "name" ? (
-            <TextInput label={"Name"} handleSubmit={searchSubmit} />
-          ) : activeTab === "category" ? (
-            <AutoCompleteInput
-              label="Enter a category"
-              data={categoriesData}
-              handleSubmit={searchSubmit}
+      <nav aria-label="search tabs">
+        <ul className="flex space-x-3" role="menu" aria-label="search tabs">
+          {listData.map((item, index) => (
+            <ListItem
+              text={`${item.name.charAt(0).toUpperCase() + item.name.slice(1)}`}
+              key={index}
+              active={activeTab === item.name ? true : false}
+              handleClick={() => setActiveTab(item.name)}
+              icon={item.icon}
             />
-          ) : (
-            <AutoCompleteInput
-              label="Enter an ingredient"
-              data={ingredientsData}
-              handleSubmit={searchSubmit}
-            />
-          )}
-        </SearchInputWrapper>
-      </div>
+          ))}
+        </ul>
+      </nav>
+
+      <SearchInputWrapper>
+        {activeTab === "name" ? (
+          <TextInput
+            label={"Name"}
+            handleSubmit={searchSubmit}
+            buttonTestId="search-button"
+          />
+        ) : activeTab === "category" ? (
+          <AutoCompleteInput
+            label="Enter a category"
+            data={categoriesData}
+            handleSubmit={searchSubmit}
+          />
+        ) : (
+          <AutoCompleteInput
+            label="Enter an ingredient"
+            data={ingredientsData}
+            handleSubmit={searchSubmit}
+          />
+        )}
+      </SearchInputWrapper>
     </section>
   );
 };

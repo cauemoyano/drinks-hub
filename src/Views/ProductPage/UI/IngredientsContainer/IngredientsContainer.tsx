@@ -13,11 +13,11 @@ const IngredientsContainer = ({ ingredients, measures }: Props) => {
   );
 
   return (
-    <div className="grid grid-cols-2 flex-1">
+    <div className="grid grid-cols-1 xs:grid-cols-2 flex-1 mb-4 xs:mb-0">
       <ul className="col-span-1 mb-4 flex flex-col justify-center">
         {ingredients.map((ingredient, i) => (
           <li
-            className="text-lg text-gray-600 py-1 cursor-pointer transition-all hover:text-tertiary-200"
+            className="xs:text-lg text-gray-700 font-medium py-1 cursor-pointer transition-all hover:text-tertiary-200"
             key={i}
             onMouseEnter={() => setIngredientToShow(ingredient)}
           >
@@ -34,6 +34,7 @@ const IngredientsContainer = ({ ingredients, measures }: Props) => {
           )}-Medium.png`}
           onError={(e: any) => (e.target.src = "/images/img-placeholder.png")}
           alt={`illustration for ingredient ${ingredientToShow}`}
+          className="max-w-[50vw]"
         ></img>
       </div>
     </div>
