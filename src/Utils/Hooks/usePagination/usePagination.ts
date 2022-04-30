@@ -7,7 +7,7 @@ type Props = {
 };
 
 const usePagination = ({ initialItems, offset }: Props) => {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [data, setData] = useState<DrinkType[][]>([]);
   const [pageData, setPageData] = useState<DrinkType[]>([]);
   const [items, setItems] = useState(initialItems);
@@ -32,10 +32,10 @@ const usePagination = ({ initialItems, offset }: Props) => {
 
   useEffect(() => {
     if (!data.length) return;
-    setPageData(data[page]);
+    setPageData(data[page - 1]);
   }, [page, data]);
 
-  return { pageData, setPage, pages, setItems };
+  return { pageData, setPage, pages, setItems, page };
 };
 
 export default usePagination;

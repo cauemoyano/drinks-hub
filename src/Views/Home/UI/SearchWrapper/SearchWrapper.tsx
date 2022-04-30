@@ -83,6 +83,8 @@ const SearchWrapper = () => {
             label={"Name"}
             handleSubmit={searchSubmit}
             buttonTestId="search-button"
+            id="search-wrapper-text-input"
+            inputTestId="home-input-name"
           />
         ) : activeTab === "category" ? (
           <AutoCompleteInput

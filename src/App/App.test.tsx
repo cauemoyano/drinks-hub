@@ -25,7 +25,7 @@ describe("full app rendering/navigating", () => {
     setup();
 
     //insert pina on name input
-    const nameInput = screen.getByLabelText(/name/i);
+    const nameInput = screen.getByTestId("home-input-name");
     fireEvent.change(nameInput, { target: { value: "pina" } });
     //click search button
     fireEvent.click(screen.getByTestId(/search-button/i));

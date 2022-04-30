@@ -1,29 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useContext, useEffect } from "react";
 
 import NavBar from "../Components/Layouts/navigation/NavBar/NavBar";
 import { AppContext, AppContextType } from "../Context/context";
 import { useDataApi } from "../Utils/Hooks/useDataApi/useDataApi";
-import Home from "../Views/Home/Home";
-import ListPage from "../Views/ListPage/ListPage";
-import NotFound from "../Views/NotFound/NotFound";
-import ProductPage from "../Views/ProductPage/ProductPage";
 import AnimatedRoutes from "./AnimatedRoutes";
 
 function App() {
   const { setCategories, setIngredients } = useContext(
     AppContext
   ) as AppContextType;
-  const {
-    data: categories,
-    callApi: callCategories,
-    error: categoriesError,
-  } = useDataApi(null);
-  const {
-    data: ingredients,
-    callApi: callIngredients,
-    error: ingredientsError,
-  } = useDataApi(null);
+  const { data: categories, callApi: callCategories } = useDataApi(null);
+  const { data: ingredients, callApi: callIngredients } = useDataApi(null);
 
   useEffect(() => {
     callCategories(

@@ -49,10 +49,11 @@ const Sidebar = ({
       <h2 className="text-2xl text-neutral-dark font-headings font-semibold text-tertiary-200">
         Search
       </h2>
-      <div className="mb-4">
+      <div className="mb-4 max-w-xs">
         <TextInput
           label={"Name"}
           handleSubmit={searchSubmit}
+          id={`sidebar-text-input-${Math.floor(Math.random() * 100)}`}
           colors={{
             buttonTextColor: "text-gray-700",
             label: "text-gray-800",

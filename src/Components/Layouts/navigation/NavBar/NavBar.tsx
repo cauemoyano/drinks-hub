@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import StatefulLink from "../../../../Utils/StatefulLink";
 import Menu from "./UI/Menu";
 
 const NavBar = () => {
   return (
     <header
-      className="border-b relative flex sm:justify-center"
+      className="border-b sticky top-0 left-0 z-50 bg-neutral-light sm:relative flex flex-col sm:flex-row sm:justify-center"
       aria-label="site header"
     >
       <h1 aria-label="Home" className="w-max ">

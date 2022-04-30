@@ -14,7 +14,7 @@ type Props = {
 
 const ResultContent = ({ data, offset, title, type }: Props) => {
   const [dataSorted, setDataSorted] = useState<DrinkType[]>([]);
-  const { pageData, setPage, pages, setItems } = usePagination({
+  const { pageData, setPage, pages, setItems, page } = usePagination({
     initialItems: dataSorted,
     offset: offset,
   });
@@ -48,7 +48,7 @@ const ResultContent = ({ data, offset, title, type }: Props) => {
           />
         ))}
       </ul>
-      <Pagination pages={pages} setPage={setPage} />
+      {pages >= 2 && <Pagination pages={pages} page={page} setPage={setPage} />}
     </>
   );
 };

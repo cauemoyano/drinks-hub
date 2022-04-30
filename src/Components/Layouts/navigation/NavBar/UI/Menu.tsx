@@ -12,8 +12,8 @@ const Menu = () => {
   const type = searchParams.get("type");
   return (
     <nav
-      className={`sm:hidden flex transition-all bg-primary-100 ${
-        show ? "max-h-[200rem] min-h-[100vh]" : "max-h-0"
+      className={`sm:hidden flex overflow-y-scroll transition-all bg-primary-100 ${
+        show ? "h-[calc(100vh-61px)]" : "h-0"
       }`}
       aria-label="main navigation"
     >

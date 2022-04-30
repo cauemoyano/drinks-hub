@@ -16,9 +16,9 @@ describe("usePagination hook", () => {
   });
   test("should return data from a specific page when requested", async () => {
     const { result } = renderHook(() => usePagination(testData));
-
-    await act(async () => result.current.setPage(1));
-
+    //go to second page
+    await act(async () => result.current.setPage(2));
+    //get first item of second page
     const pageData = result.current.pageData;
     const offset = pageData.length;
     const firstItemExpected = { idDrink: `${offset + 1}` };

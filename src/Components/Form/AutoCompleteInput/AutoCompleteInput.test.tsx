@@ -3,21 +3,26 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import AutoCompleteInput from "./AutoCompleteInput";
 
 const setup = (suggestions: string[] = ["chocolate", "strawberry"]) => {
+  const handleSubmit = jest.fn();
   const utils = render(
     <AutoCompleteInput
       data={suggestions}
       label="test input"
-      handleSubmit={() => {}}
+      handleSubmit={handleSubmit}
     />
   );
   const input: HTMLInputElement = screen.getByLabelText("test input");
   return {
     input,
     ...utils,
+    handleSubmit,
   };
 };
 
 describe("Test different scenarios when receiving an array of suggestions", () => {
+  beforeAll(() => {
+    window.HTMLElement.prototype.scrollIntoView = function () {};
+  });
   test("Display a list os suggestions when an input is inserted", () => {
     const { input } = setup();
     fireEvent.change(input, { target: { value: "a" } });
@@ -32,10 +37,10 @@ describe("Test different scenarios when receiving an array of suggestions", () =
     ).toBeTruthy();
   });
   test("Store item selected", () => {
-    const { input } = setup();
+    const { input, handleSubmit } = setup();
     fireEvent.change(input, { target: { value: "a" } });
     expect(screen.getByRole("presentation")).toBeVisible();
     fireEvent.keyDown(input, { key: "Enter" });
-    expect(input.value).toBe("chocolate");
+    expect(handleSubmit).toHaveBeenCalled();
   });
 });

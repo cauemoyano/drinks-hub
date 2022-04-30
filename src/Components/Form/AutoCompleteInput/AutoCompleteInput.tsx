@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { setTextRange } from "typescript";
-import SearchButton from "../../Buttons/SearchButton";
 import SuggestionsList from "./SuggestionsList";
 
 type ColorsProps = {
@@ -55,9 +53,8 @@ const AutoCompleteInput = ({
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === "Enter") {
-      setActiveSuggestionIndex(0);
-      setShowSuggestions(false);
-      setInput(filteredSuggestions[activeSuggestionIndex]);
+      setFilteredSuggestions([]);
+      handleSubmit(filteredSuggestions[activeSuggestionIndex]);
     } else if (e.key === "ArrowUp") {
       if (activeSuggestionIndex === 0) {
         return;
