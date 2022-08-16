@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="RESA Electronics Logo" src="https://github.com/cauegarcia/drinks-hub/blob/main/public/apple-icon.png" width="250" height="100">
+<img alt="Drinks Hub Logo" src="https://github.com/cauegarcia/drinks-hub/blob/main/public/apple-icon.png" width="250" height="100">
 </p>
 
 <p align="center">
