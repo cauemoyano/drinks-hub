@@ -5,7 +5,7 @@
 <p align="center">
 
 <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/cauegarcia/drinks-hub">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/cauegarcia/drinks-hub">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/cauegarcia/drinks-hub/main">
 </p>
 <p align="center">
  <a href="https://resa-electronics.netlify.app/"><img alt="Netlify Status" src="https://api.netlify.com/api/v1/badges/c3ca9423-26b8-4268-89c9-661dc50d416c/deploy-status"></a><br>
