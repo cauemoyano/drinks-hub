@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../../../../../Views/ListPage/UI/Sidebar/Sidebar";
 import SearchButton from "../../../../Buttons/SearchButton";

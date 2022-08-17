@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { animated, useSpring, useSpringRef, useChain } from "react-spring";
 import StrawHome from "./StrawHome";
 

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { DRINKS_API_ROOT } from "../../../../Utils/constants";
 import { useDataApi } from "../../../../Utils/Hooks/useDataApi/useDataApi";
 import ResultContent from "./ResultContent";
-import ResultHeader from "./ResultHeader";
 
 const ProductsList = ({
   type,
@@ -15,7 +14,7 @@ const ProductsList = ({
   const byCategory = `${DRINKS_API_ROOT}/filter.php?c=${title}`;
   const byIngredient = `${DRINKS_API_ROOT}/filter.php?i=${title}`;
 
-  const { data, callApi, fetched, loading } = useDataApi(false);
+  const { data, callApi, loading } = useDataApi(false);
 
   useEffect(() => {
     let url;

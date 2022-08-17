@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const SuggestionsList = ({
   filteredSuggestions,

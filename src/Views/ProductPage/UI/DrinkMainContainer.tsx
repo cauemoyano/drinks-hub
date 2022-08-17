@@ -1,10 +1,8 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { DrinkType } from "../../../Types/DrinkType";
 import IngredientsContainer from "./IngredientsContainer/IngredientsContainer";
 
 const DrinkMainContainer = ({ drink }: { drink: DrinkType }) => {
-  const { strDrink } = drink;
-
   const MAX_NUMBER_INGREDIENTS = 15;
 
   const ingredients = useMemo(() => {

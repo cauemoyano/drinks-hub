@@ -1,5 +1,4 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { LocationStateType } from "../../../../Types/LocationStateType";
 import StatefulLink from "../../../../Utils/StatefulLink";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useCarousel = (slider: HTMLElement | null, offset: number) => {
   const [showBtnLeft, setShowBtnLeft] = useState(false);

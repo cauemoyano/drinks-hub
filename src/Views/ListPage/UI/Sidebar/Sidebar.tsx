@@ -1,11 +1,10 @@
-import React, { useContext, useMemo, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import TextInput from "../../../../Components/Form/TextInput/TextInput";
 import { AppContext, AppContextType } from "../../../../Context/context";
 import { replaceSpaceByUnderline } from "../../../../Utils/Functions/string.functions";
 import StatefulLink from "../../../../Utils/StatefulLink";
 import LinksWrapper from "./LinksWrapper";
-import ShowButton from "./ShowButton";
 
 const Sidebar = ({
   type,

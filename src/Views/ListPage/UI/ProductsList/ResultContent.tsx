@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DrinkType } from "../../../../Types/DrinkType";
 import usePagination from "../../../../Utils/Hooks/usePagination/usePagination";
 import Pagination from "../Pagination/Pagination";

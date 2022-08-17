@@ -4,7 +4,7 @@ import { setupServer } from "msw/node";
 import { useDataApi } from "./useDataApi";
 
 const server = setupServer(
-  rest.get("/api", (req, res, ctx) => {
+  rest.get("/api", (_, res, ctx) => {
     return res(ctx.json({ data: "test" }));
   })
 );
@@ -28,7 +28,7 @@ describe("tests hook through different calls", () => {
 
   test("server returns an error", async () => {
     server.use(
-      rest.get("/error", (req, res, ctx) => {
+      rest.get("/error", (_, res, ctx) => {
         return res(
           ctx.status(500, "Server Error"),
           ctx.json({

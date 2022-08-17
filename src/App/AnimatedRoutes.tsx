@@ -1,5 +1,4 @@
-import React from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Home from "../Views/Home/Home";
 import ListPage from "../Views/ListPage/ListPage";

@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import DrinkHome from "../../Utils/Animations/DrinkHome";
 import SearchWrapper from "./UI/SearchWrapper/SearchWrapper";
 
 const Home = () => {

@@ -13,6 +13,7 @@ function App() {
   const { data: ingredients, callApi: callIngredients } = useDataApi(null);
 
   useEffect(() => {
+    console.log("running");
     callCategories(
       "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"
     );

@@ -1,11 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useContext } from "react";
-import {
-  AppContext,
-  AppContextType,
-  AppProvider,
-  CategoryType,
-} from "./context";
+import { AppContext, AppContextType, AppProvider } from "./context";
 
 const categoriesData = {
   drinks: [

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { DRINKS_API_ROOT } from "../../../../Utils/constants";
 import { decreaseAndShuffle } from "../../../../Utils/Functions/array.functions";
 import { useDataApi } from "../../../../Utils/Hooks/useDataApi/useDataApi";

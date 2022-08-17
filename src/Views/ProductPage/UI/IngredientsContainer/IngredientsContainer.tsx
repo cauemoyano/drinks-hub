@@ -1,5 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import { useState } from "react";
 import { encodeSpaceForUrl } from "../../../../Utils/Functions/string.functions";
 
 type Props = {
